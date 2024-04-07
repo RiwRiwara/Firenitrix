@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/static/js/script.js"></script>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <title>Firenitrix </title>
+</head>
+
+<body class="bg-gray-100">
+    <header class="bg-white">
+        <div class="flex justify-start items-center shadow-md px-4 py-4">
+            <h1 class="text-2xl font-bold text-primary-950">Firenitrix</h1>
+        </div>
+    </header>
+
+    <section class="flex flex-col gap-2 my-4 p-2">
+
+        <div class="grid grid-cols-6 gap-2">
+            <div class="col-span-3 p-2">
+
+                <div class="bg-white p-6 rounded-lg ">
+
+                    <div class="flex justify-between mb-4">
+                        <h2 class="text-xl font-bold text-primary-950">Status</h2>
+                        <div class="flex justify-between items-center gap-4">
+                            <div class="text-lg font-bold">Server</div>
+                            <div class="flex flex-row items-center flex-nowarp gap-1 bg-green-100 px-4 py-1 rounded-md">
+                                <div class="w-2 h-2 bg-green-700 rounded-full"></div>
+                                <div class="font-semibold text-green-700">
+                                    Normal
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-y-4 gap-x-8">
+                        {% for item in range(6) %}
+                        <div class="flex justify-between items-center ">
+                            <div class="text-lg font-bold">Server</div>
+                            <div
+                                class="flex flex-row items-center flex-nowarp gap-1  bg-green-100 px-4 py-1 rounded-md">
+                                <div class="w-2 h-2 bg-green-700 rounded-full"></div>
+                                <div class="font-semibold text-green-700">
+                                    Normal
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="col-span-3 p-2">
+                <div class="bg-white p-6 rounded-lg flex flex-col gap-4 h-full ">
+                    <h2 class="text-xl font-bold text-primary-950">Amergency message</h2>
+                    <div class="bg-primary-200 text-primary-500 p-6 text-xl font-bold rounded-md text-center">
+                        Amergency call from agent
+                    </div>
+                </div>
+            </div>
+            <div class="col-span-2 p-2">
+                <div class="bg-white p-6 rounded-lg flex flex-row flex-nowarp gap-y-4 gap-x-8">
+                    <div class="bg-primary-200 text-primary-500 text-2xl font-bold rounded-md chemical-icon">CO</div>
+                    <div class="flex flex-col gap-1">
+                        <h2 class="text-lg font-bold">Carbon Monoxide</h2>
+                        <h3>Sensor : MQ-7</h3>
+                        <h3 class="text-2xl font-bold">0.5</h3>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-span-2 p-2">
+
+                <div class="bg-white p-6 rounded-lg flex flex-row flex-nowarp gap-y-4 gap-x-8">
+                    <div class="bg-primary-200 text-primary-500 text-2xl font-bold rounded-md chemical-icon">CO</div>
+                    <div class="flex flex-col gap-1">
+                        <h2 class="text-lg font-bold">Carbon Monoxide</h2>
+                        <h3>Sensor : MQ-7</h3>
+                        <h3 class="text-2xl font-bold">0.5</h3>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-span-2 p-2">
+                <div class="bg-white p-6 rounded-lg flex flex-row flex-nowarp gap-y-4 gap-x-8">
+                    <div class="bg-primary-200 text-primary-500 text-2xl font-bold rounded-md chemical-icon">P</div>
+                    <div class="flex flex-col gap-1">
+                        <h2 class="text-lg font-bold">Poison gas</h2>
+                        <h3>Sensor : MQ-7</h3>
+                        <h3 class="text-2xl font-bold">0.5</h3>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-span-2 p-2">
+                <div class="bg-white p-6 rounded-lg flex flex-row flex-nowarp gap-y-4 gap-x-8">
+                    <div class="bg-primary-200 text-primary-500 text-2xl font-bold rounded-md chemical-icon">H2S</div>
+                    <div class="flex flex-col gap-1">
+                        <h2 class="text-lg font-bold">Hydrogen Sulfide</h2>
+                        <h3>Sensor : MQ-136</h3>
+                        <h3 class="text-2xl font-bold">0.5</h3>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-span-2 p-2">
+                <div class="bg-white p-6 rounded-lg flex flex-row flex-nowarp gap-y-4 gap-x-8">
+                    <div class="bg-primary-200 text-primary-500 text-2xl font-bold rounded-md chemical-icon">CO</div>
+                    <div class="flex flex-col gap-1">
+                        <h2 class="text-lg font-bold">Carbon Monoxide</h2>
+                        <h3>Sensor : MQ-7</h3>
+                        <h3 class="text-2xl font-bold">0.5</h3>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-span-2 p-2">
+                <div class="bg-white p-6 rounded-lg flex flex-row flex-nowarp gap-y-4 gap-x-8">
+                    <div class="bg-primary-200 text-primary-500 text-2xl font-bold rounded-md chemical-icon">CO</div>
+                    <div class="flex flex-col gap-1">
+                        <h2 class="text-lg font-bold">Carbon Monoxide</h2>
+                        <h3>Sensor : MQ-7</h3>
+                        <h3 class="text-2xl font-bold">0.5</h3>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Table -->
+    <section class="flex flex-col gap-2 my-4 p-2" style="max-height: 250px; overflow-y: scroll;">
+        <div class="relative overflow-x-auto">
+            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">
+                            Product name
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Color
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Category
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Price
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in range(20) %}
+
+                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            Apple MacBook Pro 17"
+                        </th>
+                        <td class="px-6 py-4">
+                            Silver
+                        </td>
+                        <td class="px-6 py-4">
+                            Laptop
+                        </td>
+                        <td class="px-6 py-4">
+                            $2999
+                        </td>
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+
+    </section>
+
+</body>
+
+</html>
