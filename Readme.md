@@ -31,3 +31,6 @@ pip install -r requirements.txt
 ```
 uvicorn main:app --reload
 ```
+<hr />
+![image](https://github.com/RiwRiwara/Firenitrix/assets/61749500/b5dae9ca-c332-40ff-b8b1-6998943422ac)
+
