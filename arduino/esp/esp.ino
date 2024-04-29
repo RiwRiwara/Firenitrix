@@ -41,52 +41,27 @@ String sendGetRequest(const char* url) {
   return response;
 }
 
-void sendPostRequest(const char* url, const char* postData) {
-  HTTPClient http;
-  http.begin(url);
-
-  // Set content type header
-  http.addHeader("Content-Type", "application/json");
-
-  // Send the POST request
-  int httpResponseCode = http.POST(postData);
-
-  // Check for response
-  if (httpResponseCode > 0) {
-    String response = http.getString();
-    Serial.print("HTTP Response code: ");
-    Serial.println(httpResponseCode);
-    Serial.print("Response: ");
-    Serial.println(response);
-  } else {
-    Serial.print("Error code: ");
-    Serial.println(httpResponseCode);
-  }
-
-  http.end();
-}
-
 
 
 // SETUP FUNCTION
 void setup() {
   Serial.begin(115200);
   Serial2.begin(9600, SERIAL_8N1, RXp2, TXp2);
-
+ 
   connectToWiFi();
 
   String response = sendGetRequest("http://192.168.1.238:8000/sensor/test");
   Serial.println("API Response:");
   Serial.println(response);
 
-  const char* eventData = "{\"sensor_name\":\"TemperatureSensor\",\"value\":25.5,\"status\":\"OK\",\"description\":\"Temperature within normal range\"}";
-  sendPostRequest("http://192.168.1.238:8000/sensor/event", eventData);
 }
 
 void loop() {
   String receivedMessage = Serial2.readString();
   Serial.println(receivedMessage);
-  String response = sendGetRequest(receivedMessage);
+
+  const char* receivedMessageNew = receivedMessage.c_str();
+  String response = sendGetRequest(receivedMessageNew);
+
   delay(1000);
 }
-

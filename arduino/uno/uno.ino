@@ -58,6 +58,8 @@ void loop() {
   }
   if (state9 == LOW) {
     Serial.println("Change Mode");
+    Serial.println(mode);
+    delay(100);
     if (mode == 1) {
       mode = 2;
     } else if (mode == 2) {
@@ -77,30 +79,23 @@ void loop() {
     case 1:
       Serial.println("MQ7");
       ShowTextLine1(GetMq7Sensor());
-      ShowTextLine2("Status : Safe");
+      ShowTextLine2("MQ7 => Safe");
       break;
     case 2:
       Serial.println("MQ9");
       ShowTextLine1(GetMq9Sensor());
-      ShowTextLine2("Status : Safe");
+      ShowTextLine2("MQ9 => Safe");
       break;
     case 3:
       Serial.begin(9600);
+      char jsonBuffer[256];
+      createJsonParams(jsonBuffer, "MQ7", GetMq7Sensor(), "Sensors_data_retrieved_successfully", "OK");
+      Serial.print(jsonBuffer);
+      delay(1500);
 
-      const char* sensor_name = "/MQ7";
-      const char* add_sensor_name = concat(saveApi, sensor_name);
-      const char* status = "/OK/";
-      const char* add_status = concat(add_sensor_name, status);
-      const char* value = GetMq7Sensor();
-      const char* add_value = concat(add_status, value);
-      const char* desc = "/Sensors data retrieved successfully";
-      const char* add_desc = concat(add_value, desc);
-      Serial.print(add_desc);
-
-      delay(1000);
-
-      ShowTextLine1("");
-      ShowTextLine2("Auto save to DB");
+      ShowTextLine1(GetMq9Sensor());
+      ShowTextLine2("Auto save to DB : Safe");
+      break;
   }
 
 
@@ -157,19 +152,6 @@ const char* GetMq9Sensor() {
   return buffer;
 }
 
-
-
-
-const char* concat(const char* str1, const char* str2) {
-  int len1 = strlen(str1);
-  int len2 = strlen(str2);
-  int totalLen = len1 + len2 + 1;  // +1 for null terminator
-
-  char* result = new char[totalLen];
-
-  strcpy(result, str1);
-
-  strcat(result, str2);
-
-  return result;
+void createJsonParams(char* jsonBuffer, char* sensor_name, char* value, char* description, char* status) {
+  sprintf(jsonBuffer, "%s/%s/%s/%s/%s", saveApi, sensor_name, status, value, description);
 }

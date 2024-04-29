@@ -17,6 +17,8 @@
         </div>
     </header>
 
+
+
     <section class="flex flex-col gap-2 my-4 p-2">
 
         <div class="grid grid-cols-6 gap-2">
@@ -38,18 +40,30 @@
                     </div>
 
                     <div class="grid grid-cols-2 gap-y-4 gap-x-8">
-                        {% for item in range(6) %}
+
                         <div class="flex justify-between items-center ">
-                            <div class="text-lg font-bold">Server</div>
+                            <div class="text-lg font-bold">MQ-7</div>
                             <div
                                 class="flex flex-row items-center flex-nowarp gap-1  bg-green-100 px-4 py-1 rounded-md">
                                 <div class="w-2 h-2 bg-green-700 rounded-full"></div>
                                 <div class="font-semibold text-green-700">
-                                    Normal
+                                    {{lastSensorMq7.status }}
+
                                 </div>
                             </div>
                         </div>
-                        {% endfor %}
+                        <div class="flex justify-between items-center ">
+                            <div class="text-lg font-bold">MQ-9</div>
+                            <div
+                                class="flex flex-row items-center flex-nowarp gap-1  bg-green-100 px-4 py-1 rounded-md">
+                                <div class="w-2 h-2 bg-green-700 rounded-full"></div>
+                                <div class="font-semibold text-green-700">
+                                    {{lastSensorMq9.status }}
+
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
 
                 </div>
@@ -69,7 +83,12 @@
                     <div class="flex flex-col gap-1">
                         <h2 class="text-lg font-bold">Carbon Monoxide</h2>
                         <h3>Sensor : MQ-7</h3>
-                        <h3 class="text-2xl font-bold">0.5</h3>
+                        <h3 class="text-2xl font-bold">
+                            {{lastSensorMq7.value }}
+                        </h3>
+                        <div>
+                            ppm
+                        </div>
                     </div>
                 </div>
 
@@ -79,54 +98,66 @@
                 <div class="bg-white p-6 rounded-lg flex flex-row flex-nowarp gap-y-4 gap-x-8">
                     <div class="bg-primary-200 text-primary-500 text-2xl font-bold rounded-md chemical-icon">CO</div>
                     <div class="flex flex-col gap-1">
-                        <h2 class="text-lg font-bold">Carbon Monoxide</h2>
-                        <h3>Sensor : MQ-7</h3>
-                        <h3 class="text-2xl font-bold">0.5</h3>
+                        <h2 class="text-lg font-bold">Toxi Gas</h2>
+                        <h3>Sensor : MQ-9</h3>
+                        <h3 class="text-2xl font-bold">
+                            {{lastSensorMq9.value}}
+                        </h3>
+                        <div>
+                            ppm
+                        </div>
                     </div>
                 </div>
 
             </div>
             <div class="col-span-2 p-2">
-                <div class="bg-white p-6 rounded-lg flex flex-row flex-nowarp gap-y-4 gap-x-8">
-                    <div class="bg-primary-200 text-primary-500 text-2xl font-bold rounded-md chemical-icon">P</div>
-                    <div class="flex flex-col gap-1">
-                        <h2 class="text-lg font-bold">Poison gas</h2>
-                        <h3>Sensor : MQ-7</h3>
-                        <h3 class="text-2xl font-bold">0.5</h3>
+                <div class="bg-gray-200 p-6 rounded-lg flex flex-row flex-nowarp justify-center items-center h-full">
+                    <div class="text-gray-600 mr-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M2 10a8 8 0 1116 0 8 8 0 01-16 0zm9-3a1 1 0 00-1 1v4a1 1 0 002 0V8a1 1 0 00-1-1zm0 6a1 1 0 100 2 1 1 0 000-2z"
+                                clip-rule="evenodd" />
+                        </svg>
                     </div>
+                    <h2 class="text-lg font-bold text-gray-600">Sensor Unavailable</h2>
                 </div>
 
             </div>
             <div class="col-span-2 p-2">
-                <div class="bg-white p-6 rounded-lg flex flex-row flex-nowarp gap-y-4 gap-x-8">
-                    <div class="bg-primary-200 text-primary-500 text-2xl font-bold rounded-md chemical-icon">H2S</div>
-                    <div class="flex flex-col gap-1">
-                        <h2 class="text-lg font-bold">Hydrogen Sulfide</h2>
-                        <h3>Sensor : MQ-136</h3>
-                        <h3 class="text-2xl font-bold">0.5</h3>
+                <div class="bg-gray-200 p-6 rounded-lg flex flex-row flex-nowarp justify-center items-center h-full">
+                    <div class="text-gray-600 mr-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M2 10a8 8 0 1116 0 8 8 0 01-16 0zm9-3a1 1 0 00-1 1v4a1 1 0 002 0V8a1 1 0 00-1-1zm0 6a1 1 0 100 2 1 1 0 000-2z"
+                                clip-rule="evenodd" />
+                        </svg>
                     </div>
+                    <h2 class="text-lg font-bold text-gray-600">Sensor Unavailable</h2>
+                </div>
+            </div>
+            <div class="col-span-2 p-2">
+                <div class="bg-gray-200 p-6 rounded-lg flex flex-row flex-nowarp justify-center items-center h-full">
+                    <div class="text-gray-600 mr-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M2 10a8 8 0 1116 0 8 8 0 01-16 0zm9-3a1 1 0 00-1 1v4a1 1 0 002 0V8a1 1 0 00-1-1zm0 6a1 1 0 100 2 1 1 0 000-2z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <h2 class="text-lg font-bold text-gray-600">Sensor Unavailable</h2>
                 </div>
 
             </div>
             <div class="col-span-2 p-2">
-                <div class="bg-white p-6 rounded-lg flex flex-row flex-nowarp gap-y-4 gap-x-8">
-                    <div class="bg-primary-200 text-primary-500 text-2xl font-bold rounded-md chemical-icon">CO</div>
-                    <div class="flex flex-col gap-1">
-                        <h2 class="text-lg font-bold">Carbon Monoxide</h2>
-                        <h3>Sensor : MQ-7</h3>
-                        <h3 class="text-2xl font-bold">0.5</h3>
+                <div class="bg-gray-200 p-6 rounded-lg flex flex-row flex-nowarp justify-center items-center">
+                    <div class="text-gray-600 mr-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M2 10a8 8 0 1116 0 8 8 0 01-16 0zm9-3a1 1 0 00-1 1v4a1 1 0 002 0V8a1 1 0 00-1-1zm0 6a1 1 0 100 2 1 1 0 000-2z"
+                                clip-rule="evenodd" />
+                        </svg>
                     </div>
-                </div>
-
-            </div>
-            <div class="col-span-2 p-2">
-                <div class="bg-white p-6 rounded-lg flex flex-row flex-nowarp gap-y-4 gap-x-8">
-                    <div class="bg-primary-200 text-primary-500 text-2xl font-bold rounded-md chemical-icon">CO</div>
-                    <div class="flex flex-col gap-1">
-                        <h2 class="text-lg font-bold">Carbon Monoxide</h2>
-                        <h3>Sensor : MQ-7</h3>
-                        <h3 class="text-2xl font-bold">0.5</h3>
-                    </div>
+                    <h2 class="text-lg font-bold text-gray-600">Sensor Unavailable</h2>
                 </div>
 
             </div>
@@ -141,34 +172,34 @@
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
                         <th scope="col" class="px-6 py-3">
-                            Product name
+                            Sensor Name
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Color
+                            Value
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Category
+                            Status
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Price
+                            Description
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-                    {% for item in range(20) %}
+                    {% for item in data %}
 
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            Apple MacBook Pro 17"
+                            {{item.sensor_name}}
                         </th>
                         <td class="px-6 py-4">
-                            Silver
+                            {{item.value}}
                         </td>
                         <td class="px-6 py-4">
-                            Laptop
+                            {{item.status}}
                         </td>
                         <td class="px-6 py-4">
-                            $2999
+                            {{item.description}}
                         </td>
                     </tr>
 

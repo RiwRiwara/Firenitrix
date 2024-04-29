@@ -43,24 +43,8 @@ async def testDB():
     }
 
 
-@app.post("/event")
-async def create_event(event: Event):
-    db = client['iot']['event']
-    event_dict = {}
-    event_dict['sensor_name'] = event.sensor_name
-    event_dict['value'] = event.value
-    event_dict['status'] = event.status
-    event_dict['description'] = event.description
-    event_dict['created_at'] = datetime.now()
-    event_dict['updated_at'] = datetime.now()
-    result = db.insert_one(event_dict)
-    
-    if result.inserted_id:
-        return {"message": "Event created successfully"}
-    else:
-        raise HTTPException(status_code=500, detail="Failed to create event")
-    
-@app.get("/event/{sensor_name}/{status}/{value}/{description}/")
+
+@app.get("/event/{sensor_name}/{status}/{value}/{description}")
 async def get_event(sensor_name: str, status: str, value: float, description: str):
     db = client['iot']['event']
     
