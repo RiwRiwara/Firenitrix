@@ -3,6 +3,7 @@ from pymongo.server_api import ServerApi
 
 collection_name = 'iot'
 uri = 'mongodb+srv://riw:Vha315Sfv0QM44ki@newcluster.fxldupt.mongodb.net/?retryWrites=true&w=majority'
+# uri = 'mongodb://root:password@pumipat.trueddns.com:63711'
 client = MongoClient(uri, server_api=ServerApi('1'))
 
 try:

@@ -5,15 +5,15 @@
 // ================== Constant ==================
 LiquidCrystal_I2C lcd(0x27, 16, 2);
 
-int buzzer = 13;
+int buzzer = 7;
 const int mq7Pin = A2;
 const int mq9Pin = A3;
 const int hMq7pin = 2;
 const int hMq9Pin = 3;
 
-const int buttonPin8 = 8;
-const int buttonPin9 = 9;
-const int buttonPin10 = 10;
+const int buttonPin4 = 4;
+const int buttonPin5 = 5;
+const int buttonPin6 = 6;
 
 const char* saveApi = "http://192.168.1.238:8000/sensor/event";
 
@@ -46,17 +46,17 @@ void loop() {
   Serial.begin(4800);
 
   // Get button state
-  int state8 = digitalRead(buttonPin8);
-  int state9 = digitalRead(buttonPin9);
-  int state10 = digitalRead(buttonPin10);
+  int state4 = digitalRead(buttonPin4);
+  int state5 = digitalRead(buttonPin5);
+  int state6 = digitalRead(buttonPin6);
 
   // Mode
-  if (state8 == LOW) {
+  if (state4 == LOW) {
     Serial.begin(9600);
     Serial.println(GetMq9Sensor());
     delay(200);
   }
-  if (state9 == LOW) {
+  if (state5 == LOW) {
     Serial.println("Change Mode");
     Serial.println(mode);
     delay(100);
@@ -69,7 +69,7 @@ void loop() {
     }
     delay(100);
   }
-  if (state10 == LOW) {
+  if (state6 == LOW) {
     Serial.println("Emergency Call!");
     delay(200);
   }

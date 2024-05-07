@@ -1,30 +1,30 @@
-const int buttonPin8 = 8;
-const int buttonPin9 = 9;
-const int buttonPin10 = 10;
+const int buttonPin4 = 4;
+const int buttonPin5 = 5;
+const int buttonPin6 = 6;
 
 void setup() {
   Serial.begin(9600);
 
-  pinMode(buttonPin8, INPUT_PULLUP);
-  pinMode(buttonPin9, INPUT_PULLUP);
-  pinMode(buttonPin10, INPUT_PULLUP);
+  pinMode(buttonPin4, INPUT_PULLUP);
+  pinMode(buttonPin5, INPUT_PULLUP);
+  pinMode(buttonPin6, INPUT_PULLUP);
 }
 
 void loop() {
-  int state8 = digitalRead(buttonPin8);
-  int state9 = digitalRead(buttonPin9);
-  int state10 = digitalRead(buttonPin10);
+  int state4 = digitalRead(buttonPin4);
+  int state5 = digitalRead(buttonPin5);
+  int state6 = digitalRead(buttonPin6);
 
-  if (state8 == LOW) {
-    Serial.println("Button 8 pressed");
+  if (state4 == LOW) {
+    Serial.println("Button 4 pressed");
     delay(200); 
   }
-  if (state9 == LOW) {
-    Serial.println("Button 9 pressed");
+  if (state5 == LOW) {
+    Serial.println("Button 5 pressed");
     delay(200); 
   }
-  if (state10 == LOW) {
-    Serial.println("Button 10 pressed");
+  if (state6 == LOW) {
+    Serial.println("Button 6 pressed");
     delay(200); 
   }
 
