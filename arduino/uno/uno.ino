@@ -15,6 +15,14 @@ const int buttonPin4 = 4;
 const int buttonPin5 = 5;
 const int buttonPin6 = 6;
 
+// Didn't code for show 
+// only initialized pin
+const int ledPin8 = 8;
+const int ledPin9 = 9;
+const int ledPin10 = 10;
+
+const int tiltPin11 = 11;
+
 const char* saveApi = "http://192.168.1.238:8000/sensor/event";
 
 int mode = 1;
