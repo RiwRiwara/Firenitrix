@@ -5,7 +5,6 @@
 // ================== Constant ==================
 LiquidCrystal_I2C lcd(0x27, 16, 2);
 
-int buzzer = 7;
 const int mq7Pin = A2;
 const int mq9Pin = A3;
 const int hMq7pin = 2;
@@ -15,8 +14,8 @@ const int buttonPin4 = 4;
 const int buttonPin5 = 5;
 const int buttonPin6 = 6;
 
-// Didn't code for show 
-// only initialized pin
+#define buzzerPin 7
+
 const int ledPin8 = 8;
 const int ledPin9 = 9;
 const int ledPin10 = 10;
@@ -30,9 +29,6 @@ int modeEmergency = 1;
 
 // ================== Setup ==================
 void setup() {
-
-  pinMode(buzzer, OUTPUT);
-
   // Sensors
   pinMode(hMq7pin, OUTPUT);
   digitalWrite(hMq7pin, HIGH);
@@ -47,6 +43,21 @@ void setup() {
   // LCD
   lcd.begin();
   lcd.backlight();
+
+  // LED
+  pinMode(ledPin8, OUTPUT);
+  pinMode(ledPin9, OUTPUT);
+  pinMode(ledPin10, OUTPUT);
+
+  digitalWrite(ledPin8, LOW);
+  digitalWrite(ledPin9, LOW);
+  digitalWrite(ledPin10, LOW);
+
+  // Buzzer
+  pinMode(buzzerPin, OUTPUT);
+
+  // Tilt
+  pinMode(tiltPin11, INPUT);
 }
 
 // ================== Loop ==================
@@ -73,13 +84,19 @@ void loop() {
     } else if (mode == 2) {
       mode = 3;
     } else if (mode == 3) {
+      mode = 4;
+    } else if (mode == 4) {
       mode = 1;
     }
     delay(100);
   }
   if (state6 == LOW) {
     Serial.println("Emergency Call!");
-    delay(200);
+    digitalWrite(ledPin8, HIGH);
+    digitalWrite(buzzerPin, LOW);
+    delay(1000);
+    digitalWrite(buzzerPin, HIGH);
+    delay(1000);
   }
 
   // Mode toggle
@@ -88,13 +105,20 @@ void loop() {
       Serial.println("MQ7");
       ShowTextLine1(GetMq7Sensor());
       ShowTextLine2("MQ7 => Safe");
+      digitalWrite(ledPin10, HIGH);
       break;
     case 2:
       Serial.println("MQ9");
       ShowTextLine1(GetMq9Sensor());
       ShowTextLine2("MQ9 => Safe");
+      digitalWrite(ledPin10, HIGH);
       break;
     case 3:
+      Serial.println("Tilt");
+      ShowTextLine1(GetTiltSensor());
+      ShowTextLine2("Tilt => Safe");
+      digitalWrite(ledPin10, HIGH);
+    case 4:
       Serial.begin(9600);
       char jsonBuffer[256];
       createJsonParams(jsonBuffer, "MQ7", GetMq7Sensor(), "Sensors_data_retrieved_successfully", "OK");
@@ -103,9 +127,9 @@ void loop() {
 
       ShowTextLine1(GetMq9Sensor());
       ShowTextLine2("Auto save to DB : Safe");
+      digitalWrite(ledPin9, HIGH);
       break;
   }
-
 
   Serial.end();
   delay(500);
@@ -156,6 +180,21 @@ const char* GetMq9Sensor() {
   static char buffer[16];
   String str = "";
   str += ppm;
+  str.toCharArray(buffer, 16);
+  return buffer;
+}
+
+const char* GetTiltSensor() {
+  int sensorValue = digitalRead(tiltPin11);
+
+  static char buffer[16];
+  String str = "";
+  if (sensorValue == 0)
+  {
+    str += "Normal";
+  } else {
+    str += "Tilted";
+  }
   str.toCharArray(buffer, 16);
   return buffer;
 }
