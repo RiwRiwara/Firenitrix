@@ -111,18 +111,23 @@
 
             </div>
             <div class="col-span-2 p-2">
-                <div class="bg-gray-200 p-6 rounded-lg flex flex-row flex-nowarp justify-center items-center h-full">
-                    <div class="text-gray-600 mr-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd"
-                                d="M2 10a8 8 0 1116 0 8 8 0 01-16 0zm9-3a1 1 0 00-1 1v4a1 1 0 002 0V8a1 1 0 00-1-1zm0 6a1 1 0 100 2 1 1 0 000-2z"
-                                clip-rule="evenodd" />
-                        </svg>
+
+                <div class="bg-white p-6 rounded-lg flex flex-row flex-nowarp gap-y-4 gap-x-8">
+                    <div class="bg-primary-200 text-primary-500 text-2xl font-bold rounded-md chemical-icon">T</div>
+                    <div class="flex flex-col gap-1">
+                        <h2 class="text-lg font-bold">Tilt</h2>
+                        <h3>Sensor : Tilt</h3>
+                        <h3 class="text-2xl font-bold">
+                            -
+                        </h3>
+                        <div>
+                            ppm
+                        </div>
                     </div>
-                    <h2 class="text-lg font-bold text-gray-600">Sensor Unavailable</h2>
                 </div>
 
             </div>
+
             <div class="col-span-2 p-2">
                 <div class="bg-gray-200 p-6 rounded-lg flex flex-row flex-nowarp justify-center items-center h-full">
                     <div class="text-gray-600 mr-4">
@@ -183,6 +188,9 @@
                         <th scope="col" class="px-6 py-3">
                             Description
                         </th>
+                        <th>
+                            date
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -190,7 +198,12 @@
 
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            {{item.sensor_name}}
+                            {% if item.sensor_name %}
+                            {{ item.sensor_name }}
+                            {% else %}
+                            {{ item.sensor }}
+                            {% endif %}
+
                         </th>
                         <td class="px-6 py-4">
                             {{item.value}}
@@ -200,6 +213,9 @@
                         </td>
                         <td class="px-6 py-4">
                             {{item.description}}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{item.created_at}}
                         </td>
                     </tr>
 
