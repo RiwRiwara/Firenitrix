@@ -17,8 +17,8 @@ async def home(request: Request):
     
     allData = list(db.find().sort("created_at", -1))
 
-    lastSensorMq7 = db.find_one({"sensor_name": "MQ7"}, sort=[("created_at", -1)])
-    lastSensorMq9 = db.find_one({"sensor_name": "MQ9"}, sort=[("created_at", -1)])
+    lastSensorMq7 = db.find_one({"sensor": "MQ7"}, sort=[("created_at", -1)])
+    lastSensorMq9 = db.find_one({"sensor": "MQ9"}, sort=[("created_at", -1)])
 
     return templates.TemplateResponse("index.html", {
         "request": request,
